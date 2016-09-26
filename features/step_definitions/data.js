@@ -252,7 +252,7 @@ module.exports = function () {
     this.Given(/^the profile file$/, (data, callback) => {
         // TODO: Don't overwrite if it exists
         this.profileFile = this.profileCacheFile;
-        let prefix = 'package.path = package.path .. \';' + this.PROFILES_PATH + '/?.lua\'\n';
+        let prefix = 'package.path = "' + this.PROFILES_PATH + '/?.lua;" .. package.path\n';
         fs.writeFile(this.profileCacheFile, prefix + data, callback);
     });
 
